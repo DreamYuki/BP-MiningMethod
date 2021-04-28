@@ -1,7 +1,11 @@
 <template>
-  <div class="tittle">
-    <h2>神经网络</h2>
-    <h1>采矿方法优选系统</h1>
+  <div class="main">
+    <div class="tittle">
+        <h2>神经网络</h2>
+        <h1>采矿方法优选系统</h1>
+    </div>
+    <el-button type="primary" round>开始您的优选</el-button>
+    <el-button type="warning" round>智慧地图</el-button>
   </div>
 </template>
 
@@ -11,15 +15,26 @@ export default {
   props: {
     msg: String
   },
-  msg: "aaa"
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.el-button {
+    display: inline-block;
+    width: 20%;
+    height: 60px;
+    font-size: 30px;
+    margin: 30px;
+}
 .tittle {
+    margin-bottom: 30px;
+}
+.el-main {
+    position: relative;
+}   
+.main {
     margin: auto;
-    margin-top: 15%;
     color: #fff;
 }
 h1 {
