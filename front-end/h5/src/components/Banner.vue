@@ -1,3 +1,6 @@
+<template>
+    <canvas></canvas>
+</template>
 <style>
 canvas {
    position: absolute;
@@ -5,6 +8,8 @@ canvas {
    left: 0;
    width: 100%;
    height: 100%;
+   min-width: 960px;
+   min-height: 720px;
    z-index: -100;
 }</style>
 
@@ -129,5 +134,4 @@ for (let i = 0; i < vertexCount; i++) {
     let offset = oceanWidth / 2
     vertices.push([(-offset + x) * gridSize, y * gridSize, z * gridSize])
 }
- 
 loop()</script>

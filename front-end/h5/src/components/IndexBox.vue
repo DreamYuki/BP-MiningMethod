@@ -4,8 +4,8 @@
         <h2>神经网络</h2>
         <h1>采矿方法优选系统</h1>
     </div>
-    <el-button type="primary" round>开始您的优选</el-button>
-    <el-button type="warning" round>智慧地图</el-button>
+    <el-button type="primary" round><router-link to="/method" @click="refresh">方法优选</router-link></el-button>
+    <el-button type="warning" round><router-link to="/map">智慧地图</router-link></el-button>
   </div>
 </template>
 
@@ -21,7 +21,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .el-button {
-    display: inline-block;
+    display: inline-block; 
     width: 20%;
     height: 60px;
     font-size: 30px;
@@ -29,6 +29,7 @@ export default {
 }
 .tittle {
     margin-bottom: 30px;
+    user-select:none;
 }
 .el-main {
     position: relative;
@@ -57,6 +58,10 @@ li {
   margin: 0 10px;
 }
 a {
-  color: #42b983;
+  color: #fff;
+  text-decoration: none;
+}
+.router-link-active {
+  text-decoration: none;
 }
 </style>

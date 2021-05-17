@@ -6,27 +6,30 @@
                 <Nav :loginEntry="info" />
             </el-header>
             <el-main>
-                <component :is="componentId"></component>
-                <IndexBox/>
-                <!-- <Form/> -->
+                <!-- <component :is="componentId"></component> -->
+                <router-view name="IndexBox"></router-view>
+                <!-- <router-view name="IndexBox" v-if="$route.meta.keepAlive"></router-view>
+                <router-view name="MethodForm" v-if="$route.meta.keepAlive"></router-view> -->
             </el-main>
             <el-footer>
                 <p>Copyright@2021，中南大学-资源与安全工程学院-采矿工程1703班-黄宇明，指导老师：周健</p>
             </el-footer>
         </el-container>
     </div>
+    <div v-if="isBanner" @childFn='BannerBtn'>
+         <router-view name="Banner"></router-view>
+    </div>
+    <router-view name="Map"></router-view>
+    <!-- <Banner :is="false"/> -->
 </template>
 
 <script>
-import IndexBox from './IndexBox.vue'
-// import Form from './Form.vue'
-import Nav from './Navigation.vue'
+import Nav from '../components/Navigation'
+// import Banner from "../components/Banner";
 export default {
-    name: 'Container',
+    name: 'Home',
     components: {
-        IndexBox,
-        // Form,
-        Nav
+        Nav,
     },
     props: {
         msg: String
@@ -34,15 +37,19 @@ export default {
     data () {
         return {
             info: "游客您好，请登录",
+            isBanner: true
+        }
+    },
+    methods: {
+        parentFn(childBool) {
+            alert(childBool)
+            this.isBanner = childBool
         }
     }
 }
 </script>
 
 <style>
-Form {
-    background-color: #fff;
-}
 .common-layout {
     width: 1280px;
     height: 100%;
@@ -58,9 +65,14 @@ Form {
 }
 .el-main {
     display: flex;
+    padding: 0;
     align-items: center;
     justify-content: center;
+    margin: 30px;
+    min-height: 500px;
+    /* overflow-y: hidden; */
 }
+.el-main::-webkit-scrollbar {display:none}
 .el-header, .el-footer {
     display: block;
     text-align: center;
@@ -73,7 +85,8 @@ Form {
     bottom: 0;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #fff;
+    color: #909399;
+    user-select:none;
 }
 
 .el-footer > p {
@@ -86,3 +99,4 @@ Form {
     height: 120%;
 }
 </style>
+

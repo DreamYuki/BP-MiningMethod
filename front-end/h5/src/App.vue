@@ -1,19 +1,31 @@
 <template>
-  <Container/>
-  <component :is="useBanner"></component>
-  <Banner/>
+ <router-view v-if="routerState"></router-view>
 </template>
 
 <script>
-import Container from './components/Container.vue'
-import Banner from './components/Banner.vue'
-
 export default {
-  name: 'App',
-  components: {
-    Container,
-    Banner
-  },
+    name: 'App',
+    //向子组件注入依赖
+    provide(){
+      return{
+        reload:this.reload
+      }
+    },
+    //声明变量
+    data(){
+      return{
+        routerState:true
+      }
+    },
+    methods:{
+      //利用$nextTick特性，router跳转完成后展示页面
+      reload(){
+        this.routerState = false;
+        this.$nextTick(()=>{
+          this.routerState = true;
+        })
+      },
+    }
 }
 </script>
 
@@ -26,4 +38,5 @@ export default {
   color: #2c3e50;
   height: 100%;
 }
+
 </style>

@@ -1,0 +1,63 @@
+{
+  // 1、实例优选后的采矿方法 string
+  // 所有采矿方法见附表
+  method: "@string",
+  // 2、该实例论文发布的日期，按补零位，如20210101 填入
+  date: "20210101",
+  // 3、矿山地区，省-市-矿山名
+  "address|object2": {
+    province: "湖南省",
+    city: "郴州市",
+    name: "柿竹园",
+  },
+  // 4、矿山年产量（万吨）
+  outputAnnual: 150,
+  // 5、矿石名称
+  oreName: "fe",
+  // 6、矿床成因和类型
+  causesAndTypes: "沉积浅变质矿床",
+  // 7、矿体平均厚度（m）
+  avgThickness: 34,
+  // 8、矿体平均倾角(°)
+  avgDipAngle: 60,
+  // 9、矿体走向长度(m)
+  strikeLength: 700,
+  // 10、矿体埋藏深度(m)
+  burialDepth: 300,
+  // 11、品位(%)
+  grade: 42,
+  // 12、容重=[矿石,围岩](array)
+  bulkDensity: [3.81, 2.7],
+  // 13、围岩名称=[上盘,下盘](string)
+  surroundingRock: ["灰岩", "千枚岩"],
+  // 14、稳固性=[矿石,上盘围岩,下盘围岩]
+  /**
+   * 1 -- 极不稳固
+   * 2 -- 不稳固
+   * 3 -- 中等稳固
+   * 4 -- 稳固
+   * 5 -- 极稳固
+   */
+  //   stability: ["中等稳固", "中等稳固", "中等稳固"],
+  stability: [3, 3, 3],
+  // 15、坚固性系数=[[矿石],[上盘围岩],[下盘围岩]],二维数组，有上下限
+  firmness: [
+    [6, 8],
+    [5, 6],
+    [5, 6],
+  ],
+  // 16、松散系数=[矿石,上盘围岩,下盘围岩]
+  loose: [1.78, 1.68, 1.68],
+  // 17、自燃性 Boolean
+  spontaneous: false,
+  // 18、粘结性 Boolean
+  cohesiveness: false,
+  // 19、地质破坏及水文条件 String
+  geologicalAndHydrological: "小断裂构造较多",
+  // 20、其它附加条件 String
+  additional: "地表允许崩落",
+}
+/*
+注意：
+如果矿山实例中没有提到的条件，则对应条件中填null，但条件不能有太多缺失
+*/

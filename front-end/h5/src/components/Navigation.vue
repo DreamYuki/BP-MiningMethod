@@ -1,9 +1,9 @@
 <template>
   <div class="navigation">
     <el-menu :default-active="activeIndex2" class="el-menu-demo" mode="horizontal" @select="handleSelect" active-text-color="#ffd04b">
-    <el-menu-item index="1">首页</el-menu-item>
-    <el-menu-item index="2">项目介绍</el-menu-item>
-    <el-menu-item index="3">模型训练</el-menu-item>
+    <el-menu-item index="1"><router-link to="/"><i class="el-icon-s-home"></i>首页</router-link></el-menu-item>
+    <el-menu-item index="2"><router-link to="/introduction">项目介绍</router-link></el-menu-item>
+    <el-menu-item index="3"><router-link to="/train">模型训练</router-link></el-menu-item>
     <!-- <el-submenu index="3">
       <template #title>
           模型训练
@@ -17,19 +17,25 @@
         <el-menu-item index="3-3-3" class="innerSelection">选项3</el-menu-item>
       </el-submenu>
     </el-submenu> -->
-    <el-menu-item index="4">数据展示</el-menu-item>
+    <el-menu-item index="4"><router-link to="/dataview" @click="closeBanner()">数据展示</router-link></el-menu-item>
     </el-menu>
 
 <!-- login -->
-    <el-menu :default-active="activeIndex2" class="el-menu-demo login" mode="horizontal" @select="handleSelect" active-text-color="#ffd04b">
-    <el-menu-item index="4">{{loginEntry}}</el-menu-item>
+    <el-menu class="el-menu-demo login" mode="horizontal" @select="handleSelect" active-text-color="#fff" id="loginComponet">
+    <!-- <el-menu-item index="4" ><router-link to="/login">{{loginEntry}}</router-link></el-menu-item> -->
+    <Login/>
     </el-menu>
   </div>
 </template>
 
 <script>
+import Login from '../components/Login.vue'
 export default {
     name: "Navigation",
+    inject: ['reload'],
+    components: {
+        Login
+    },
     data() {
       return {
         activeIndex: '1',
@@ -40,8 +46,12 @@ export default {
     methods: {
       handleSelect(key, keyPath) {
         console.log(key, keyPath);
-      }
-    }
+      },
+      closeBanner() {
+            alert(111)
+            this.$emit('BannerBtn', false)
+        }
+    },
 }
 </script>
 
@@ -57,6 +67,7 @@ export default {
 }
 .el-menu-item {
     font-size: 16px;
+    user-select:none;
 }
 .el-menu-item:focus {
     background-color: #ff1;
@@ -64,5 +75,27 @@ export default {
 }
 .login {
     float: right;
+}
+
+a {
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+}
+ 
+.router-link-active {
+  text-decoration: none;
+}
+
+#loginComponet {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+.el-icon-s-home {
+    display: block;
+    margin-top: 20px;
+    margin-right: 0;
+    height: 17px;
 }
 </style>
