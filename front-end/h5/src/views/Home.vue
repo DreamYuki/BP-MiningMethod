@@ -6,10 +6,7 @@
                 <Nav :loginEntry="info" />
             </el-header>
             <el-main>
-                <!-- <component :is="componentId"></component> -->
                 <router-view name="IndexBox"></router-view>
-                <!-- <router-view name="IndexBox" v-if="$route.meta.keepAlive"></router-view>
-                <router-view name="MethodForm" v-if="$route.meta.keepAlive"></router-view> -->
             </el-main>
             <el-footer>
                 <p>Copyright@2021，中南大学-资源与安全工程学院-采矿工程1703班-黄宇明，指导老师：周健</p>
@@ -20,7 +17,6 @@
          <router-view name="Banner"></router-view>
     </div>
     <router-view name="Map"></router-view>
-    <!-- <Banner :is="false"/> -->
 </template>
 
 <script>

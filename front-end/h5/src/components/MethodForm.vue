@@ -137,11 +137,12 @@
 <script>
   export default {
     data() {
-       var checkNumber = (rule, value, callback) => {
+       const checkNumber = (rule, value, callback) => {
         setTimeout(() => {
           if (!Number.isInteger(Number(value))) {
             callback(new Error('请输入1 ~ 4位整数值'));
           } else if(String(value).length > 4 || String(value).length < 1) {
+              console.log(String(value));
               callback(new Error('请输入1 ~ 4位整数值'));
           } else {
             callback();
@@ -269,37 +270,37 @@
         min-height: 1150px
     }
     /* 表单元素 对齐 */
-    .el-form-item {
+    #methodForm .el-form-item {
         margin: 5;
         padding: 0;
         position: relative;
         left: 0%;
     }
     /* 下拉框 缩短、并排、对齐 */
-    .el-input,.el-select {
+    #methodForm .el-input,.el-select {
         float: left;
         /* position: absolute; */
         width: 250px;
         left: 0%;
     }
     /* 输入框 缩短、并排、对齐 */
-    .miniInput,
-    .surroundingRock,
-    .surroundingRock input {
+    #methodForm .miniInput,
+    #methodForm .surroundingRock,
+    #methodForm .surroundingRock input {
         width: 125px;
         margin-right: 10px;
     }
-    .surroundingRock div {
+    #methodForm .surroundingRock div {
         width: 125px;
     }
     /* 单选框 对齐 */
-    .el-switch,
-    .el-radio-group {
+    #methodForm .el-switch,
+    #methodForm .el-radio-group {
         float: left;
         margin-top: 10px;
     }
     /* 复选框 对齐 */
-    .el-checkbox {
+    #methodForm .el-checkbox {
         float: left;
     }
     /* 提交-重置 居中、突显 */

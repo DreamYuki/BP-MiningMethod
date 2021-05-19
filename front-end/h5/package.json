@@ -13,6 +13,7 @@
     "core-js": "^3.6.5",
     "echarts": "^5.1.1",
     "element-plus": "*",
+    "qs": "^6.5.2",
     "vue": "^3.0.0",
     "vue-echarts": "*",
     "vue-router": "^4.0.0-0",

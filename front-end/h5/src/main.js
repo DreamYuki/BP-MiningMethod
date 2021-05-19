@@ -6,6 +6,8 @@ import { use } from "echarts/core";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
+import axios from 'axios'
+// import qs from 'qs'
 
 // 手动引入 ECharts 各模块来减小打包体积
 import {
@@ -33,6 +35,10 @@ createApp(App)
   .component("v-chart", ECharts)
   .mount("#app");
 
-// app1.prototype.$echarts = echarts;
+// 配置axios
+axios.defaults.baseURL = 'http://localhost:8080/'
+
+
+
 
 

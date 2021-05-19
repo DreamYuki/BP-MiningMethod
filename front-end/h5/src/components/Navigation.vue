@@ -4,25 +4,11 @@
     <el-menu-item index="1"><router-link to="/"><i class="el-icon-s-home"></i>首页</router-link></el-menu-item>
     <el-menu-item index="2"><router-link to="/introduction">项目介绍</router-link></el-menu-item>
     <el-menu-item index="3"><router-link to="/train">模型训练</router-link></el-menu-item>
-    <!-- <el-submenu index="3">
-      <template #title>
-          模型训练
-      </template>
-      <el-menu-item index="3-1">矿山实例输入</el-menu-item>
-      <el-menu-item index="3-2">模拟数据</el-menu-item>
-      <el-submenu index="3-3">
-        <template #title>多级下拉</template>
-        <el-menu-item index="3-3-1" class="innerSelection">选项1</el-menu-item>
-        <el-menu-item index="3-3-2" class="innerSelection">选项2</el-menu-item>
-        <el-menu-item index="3-3-3" class="innerSelection">选项3</el-menu-item>
-      </el-submenu>
-    </el-submenu> -->
     <el-menu-item index="4"><router-link to="/dataview" @click="closeBanner()">数据展示</router-link></el-menu-item>
     </el-menu>
 
 <!-- login -->
     <el-menu class="el-menu-demo login" mode="horizontal" @select="handleSelect" active-text-color="#fff" id="loginComponet">
-    <!-- <el-menu-item index="4" ><router-link to="/login">{{loginEntry}}</router-link></el-menu-item> -->
     <Login/>
     </el-menu>
   </div>
@@ -48,7 +34,7 @@ export default {
         console.log(key, keyPath);
       },
       closeBanner() {
-            alert(111)
+            alert("这里处理Banner和页面重定向刷新")
             this.$emit('BannerBtn', false)
         }
     },
