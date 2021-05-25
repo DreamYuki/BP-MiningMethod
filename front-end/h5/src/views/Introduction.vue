@@ -2,7 +2,7 @@
 <template>
   <div class="block">
     <el-carousel>
-      <el-carousel-item v-for="item in 4" :key="item">
+      <el-carousel-item v-for="item in [4,5,6,7]" :key="item">
         <h1 class="small">项目介绍内容{{ item }}</h1>
       </el-carousel-item>
     </el-carousel>

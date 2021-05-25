@@ -56,17 +56,29 @@
     <el-form-item label="围岩名称" prop="surroundingRock">
     <el-select class="surroundingRock" v-model="ruleForm.surroundingRock1" placeholder="上盘围岩">
         <el-option label="灰岩" value="1"></el-option>
-        <el-option label="灰岩" value="2"></el-option>
-        <el-option label="灰岩" value="3"></el-option>
-        <el-option label="灰岩" value="4"></el-option>
-        <el-option label="灰岩" value="5"></el-option>
+        <el-option label="页岩" value="2"></el-option>
+        <el-option label="千枚岩" value="3"></el-option>
+        <el-option label="玄武岩" value="4"></el-option>
+        <el-option label="大理岩" value="5"></el-option>
+        <el-option label="石英岩" value="5"></el-option>
+        <el-option label="花岗岩" value="5"></el-option>
+        <el-option label="辉绿岩" value="5"></el-option>
+        <el-option label="泥灰岩" value="5"></el-option>
+        <el-option label="白云岩" value="5"></el-option>
+        <el-option label="片麻岩" value="5"></el-option>
     </el-select>
     <el-select class="surroundingRock" v-model="ruleForm.surroundingRock2" placeholder="下盘围岩">
-        <el-option label="沉积浅变质矿床" value="surroundingRock-down-1"></el-option>
-        <el-option label="岩浆分结矿床" value="surroundingRock-down-2"></el-option>
-        <el-option label="可燃有机岩矿床" value="surroundingRock-down-3"></el-option>
-        <el-option label="机械沉积矿床" value="surroundingRock-down-4"></el-option>
-        <el-option label="化学及生物化学沉积矿床" value="surroundingRock-down-5"></el-option>
+        <el-option label="灰岩" value="1"></el-option>
+        <el-option label="页岩" value="2"></el-option>
+        <el-option label="千枚岩" value="3"></el-option>
+        <el-option label="玄武岩" value="4"></el-option>
+        <el-option label="大理岩" value="5"></el-option>
+        <el-option label="石英岩" value="5"></el-option>
+        <el-option label="花岗岩" value="5"></el-option>
+        <el-option label="辉绿岩" value="5"></el-option>
+        <el-option label="泥灰岩" value="5"></el-option>
+        <el-option label="白云岩" value="5"></el-option>
+        <el-option label="片麻岩" value="5"></el-option>
     </el-select>
   </el-form-item>
   <el-form-item label="稳固性" prop="stability">
@@ -149,6 +161,24 @@
           }
         }, 500);
       };
+       const checkAngle = (rule, value, callback) => {
+        setTimeout(() => {
+          if (!Number.isInteger(Number(value)) || Number(value) < 0 || Number(value) > 180) {
+            callback(new Error('请输入0 ~ 180位整数值'));
+          } else {
+            callback();
+          }
+        }, 500);
+      };
+       const positiveNumber = (rule, value, callback) => {
+        setTimeout(() => {
+          if (!Number.isInteger(Number(value)) || Number(value) <= 0) {
+            callback(new Error('请输入正整数值'));
+          } else {
+            callback();
+          }
+        }, 500);
+      };
       return {
         ruleForm: {
           outputAnnual: '',
@@ -199,26 +229,26 @@
           // 矿体平均倾角(°)
           avgDipAngle: [
             { required: true, message: '请输入1 ~ 180整数值', trigger: 'blur' },
-            { validator: checkNumber, trigger: 'blur' }
+            { validator: checkAngle, trigger: 'blur' }
           ],
           // 矿体走向长度(m)
           strikeLength: [
-            { required: true, message: '请输入1 ~ 180整数值', trigger: 'blur' },
-            { validator: checkNumber, trigger: 'blur' }
+            { required: true, message: '请输入正整数值', trigger: 'blur' },
+            { validator: positiveNumber, trigger: 'blur' }
           ],
           // 矿体埋藏深度(m)
           burialDepth: [
-            { required: true, message: '请输入1 ~ 180整数值', trigger: 'blur' },
-            { validator: checkNumber, trigger: 'blur' }
+            { required: true, message: '请输入正整数值', trigger: 'blur' },
+            { validator: positiveNumber, trigger: 'blur' }
           ],
           // 品位(%)
           grade: [
-            { required: true, message: '请输入1 ~ 180整数值', trigger: 'blur' },
+            { required: true, message: '请输入1 ~ 100整数值', trigger: 'blur' },
             { validator: checkNumber, trigger: 'blur' }
           ],
           // 容重
           bulkDensity: [
-            { required: false, message: '请输入1 ~ 180整数值', trigger: 'blur' },
+            { required: false, message: '请输入1 ~ 10数值', trigger: 'blur' },
           ],
         //   // 围岩名称
         //   surroundingRock: [

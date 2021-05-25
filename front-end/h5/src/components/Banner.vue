@@ -16,7 +16,6 @@ canvas {
 <script>
 /**
  *3D海洋效应与 Canvas2D
- * 您可以更改注释 "效果属性" 下的属性
  */
  
 // Init Context
